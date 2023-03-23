@@ -1,0 +1,20 @@
+.Location__Info {
+	padding: 1vw 3vw;
+	background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.Location__Item {
+	display: flex;
+	flex-direction: column;
+	align-items: self-start;
+	margin: 10px;
+	
+	color: aquamarine;
+}
+
+.Location__Span {
+	color: white;
+}
