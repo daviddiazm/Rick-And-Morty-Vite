@@ -1,20 +1,32 @@
 .Location__Info {
+	/* min-width: 100vw; */
 	padding: 1vw 3vw;
 	background-color: rgba(0, 0, 0, 0.3);
-  display: flex;
+	display: flex;
 	justify-content: center;
 	align-items: center;
+	gap: 2vw;
+	
 }
 
 .Location__Item {
+	/* min-width: 10px; */
 	display: flex;
 	flex-direction: column;
 	align-items: self-start;
 	margin: 10px;
-	
 	color: aquamarine;
 }
 
 .Location__Span {
 	color: white;
+}
+
+
+@media screen and (max-width: 530px) {
+	.Location__Info {
+		flex-direction: column;
+		align-items: flex-start;
+		padding: 1vw 10vw;
+	}
 }

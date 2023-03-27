@@ -42,6 +42,10 @@ function App() {
   return (
     <div className="App">
 
+      <div className='headerImg'>
+        <img src="/public/imgs/image 3headerRaM2.png" alt="" />
+      </div>
+
       <section className='idSearch'>
         <form action="" onSubmit={handelSubmit}>
           <input type="search" value={idLocationValue} onChange={idLocationHandleChange} />

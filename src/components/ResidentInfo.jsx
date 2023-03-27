@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import LoaderTarget from './loaders/LoaderTarget';
+import './ResidentInfo.css'
 
 
 const ResidentInfo = ({ urlResident }) => {
@@ -16,27 +17,58 @@ const ResidentInfo = ({ urlResident }) => {
     }
   }
 
+  const statusForCss = (residentInfo) => {
+    const status = residentInfo.status;
+    // console.log(status);
+    if(status == "Alive") return"#4AB648";
+    else if (status == "Dead") return"#B94343";
+    else if (status == "unknown") return"#938686";
+  }
+
   useEffect(() => {
     loadResidentInfo()
   }, [])
 
   return (
-    <>
-      {!residentInfo ? <LoaderTarget/>
-        : <article key={urlResident}>
-          <div><img src={residentInfo.image} alt={residentInfo.name} /></div>
-          <div>
-            <h3>Nombre: {residentInfo.name}</h3>
-            <p>Status: {residentInfo.status}</p>
-            <p>Species: {residentInfo.species}</p>
-            <p>Typye: {residentInfo.type}</p>
-            <p>Gender: {residentInfo.gender}</p>
-            <p>Origin: {residentInfo.origin.name}</p>
-            <p>Episodes : {residentInfo.episode.length}</p>
+    <div className='Original_Resident--Info'>
+      {!residentInfo ? <LoaderTarget />
+        : <article key={urlResident} className="Resident--Info">
+
+          <div className='Resident__img'>
+            <img src={residentInfo.image} alt={residentInfo.name} />
+          </div>
+
+          <div className='ResidentInfo__container'>
+
+            <div className='Resident__name'>{residentInfo.name}</div>
+
+            <div className='Resident__Status'>
+              <div className='Status__Text'>
+                {residentInfo.status.toUpperCase()}
+              </div>
+              <div className='Status__Point' style={{backgroundColor: statusForCss(residentInfo)}}></div>
+            </div>
+
+            <div className='ResidentInfo_Specifications Resident__Species'>
+              <p>Species:</p>
+              <div >{residentInfo.species}</div>
+            </div>
+
+            {/* <p>Gender: {residentInfo.gender}</p> */}
+
+            <div className='ResidentInfo_Specifications Resident__Origin'>
+              <p>Origin:</p>
+              <div>{residentInfo.origin.name}</div>
+            </div>
+
+            <div className='ResidentInfo_Specifications Resident__Episodes'>
+              <p>Episodes :</p>
+              <div>{residentInfo.episode.length}</div>
+            </div>
           </div>
         </article>
       }
-    </>
+    </div>
   )
 }
 
